@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wraper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: black;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        nav ul li a i {
+            margin-left: 5px;
+        }
+
+        .top-nav nav ul li ul {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            background-color: white;
+            display: none;
+        }
+
+        nav ul li ul a {
+            color: #000;
+        }
+
+        .drop-down {
+            display: flex;
+            flex-direction: row;
+
+        }
+
+        nav ul li:hover>ul {
+            display: block;
+        }
+
+        .top-nav .search {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 15px;
+            color: white;
+        }
+
+        .top-nav .search:hover {
+            background-color: #f00;
+        }
+
+        .animation {
+            overflow: hidden;
+        }
+
+        .slider {
+            position: relative;
+            width: 500%;
+            margin: 0;
+            left: 0;
+            animation: 10s slider infinite;
+        }
+
+        .slider h1 {
+            left: 50%;
+            top: 50%;
+            text-align: center;
+            color: white;
+        }
+
+        .slider img {
+            width: 20%;
+            float: left;
+        }
+
+        .main-container {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .band {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 70%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .band h1 {
+            padding-top: 64px;
+
+        }
+
+        .band>p {
+            margin: 15px;
+        }
+
+        .band p {
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .img-box {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 50px 0;
+        }
+
+        .img-box .img {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .img p {
+            text-align: center;
+            margin: 10px 0;
+            font-weight: 800;
+        }
+
+        .img img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background-color: #000;
+            padding: 100px 0;
+        }
+
+        .other {
+            width: 70%;
+            margin: 0 auto;
+            flex-direction: column;
+        }
+
+        #tour {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #ddd;
+            padding: 64px 0;
+        }
+
+        #tour h1 {
+            padding-bottom: 30px;
+        }
+
+        .tour-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tour-container ul {
+            list-style: none;
+            background-color: white;
+        }
+
+        .tour-container ul li {
+            text-align: left;
+            font-size: 20px;
+            padding: 10px;
+            width: 100%;
+            color: gray;
+            border: 1px solid gray;
+        }
+
+        .tour-container ul .circle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tour-container ul .circle span {
+            background-color: #000;
+            color: white;
+            border-radius: 50%;
+            padding: 6px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .tour-container ul li span {
+            padding: 2px;
+            background-color: #f00;
+            color: white;
+            margin-left: 15px;
+        }
+
+        .img-box1 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .img-box1 .city {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            padding: 10px;
+        }
+
+        .city img {
+            width: 100%;
+            border: 2px solid gray;
+        }
+
+        .city h3 {
+            margin: 10px;
+        }
+
+        .city .lighter {
+            margin: 20px;
+            color: gray;
+        }
+
+        .img-box1 .city button {
+            background-color: #000;
+            color: white;
+            width: 100px;
+            height: 40px;
+            align-self: flex-start;
+            margin-top: auto;
+            font-size: 14px;
+        }
+
+        .city button:hover {
+            background-color: gray;
+            color: #000;
+        }
+
+        .city p {
+            line-height: 1.7;
+        }
+
+        #contact {
+            width: 70%;
+            display: flex;
+            flex-direction: row;
+            margin: 10px auto;
+            padding: 64px 0;
+        }
+
+        .other1 {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 20px;
+        }
+
+        .contact1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 15px;
+        }
+
+        .contact1 h1 {
+            margin: 7px;
+        }
+
+        .contact1 p {
+            margin: 7px;
+        }
+
+        .div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-info p {
+            margin: 7px;
+        }
+
+        .input-contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info {
+            width: 50%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .input-contact-info input {
+            padding: 10px;
+            margin: 8px;
+        }
+
+        .input-contact-info button {
+            width: 60px;
+            padding: 10px;
+            font-size: 15px;
+            background-color: #000;
+            color: white;
+        }
+
+        .map img {
+            width: 100%;
+        }
+
+        .social-liks {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 24px;
+            padding: 64px 0;
+        }
+
+        .social-icons i:hover {
+            background-color: rgba(200, 200, 200, 0.6);
+        }
+
+        @keyframes slider {
+            0% {
+                left: 0;
+            }
+
+            20% {
+                left: 0;
+            }
+
+            25% {
+                left: -100%;
+            }
+
+            45% {
+                left: -100%;
+            }
+
+            50% {
+                left: -200%;
+            }
+
+            70% {
+                left: -200%;
+            }
+
+            75% {
+                left: -300%;
+            }
+
+            95% {
+                left: -300%;
+            }
+
+            100% {
+                left: -400%;
+            }
+
+        }
+
+        @media screen and (min-width:601px) and (max-width:800px) {
+            .img {
+                flex-basis: 48%;
+            }
+
+            .city {
+                flex-basis: 48%;
+            }
+
+            .other1 {
+                flex-basis: 100%;
+            }
+
+            .img-box1 {
+                justify-content: space-between;
+            }
+
+            #contact {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+        }
+
+        @media screen and (min-width:0px) and (max-width:600px) {
+            .img {
+                flex-basis: 100%;
+            }
+
+            .city {
+                flex-basis: 100%
+            }
+
+            .top-nav {
+                display: flex;
+                flex-direction: column;
+                float: none;
+                position: fixed;
+                z-index: 9;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            .top-nav nav ul {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+
+            .top-nav nav ul li a {
+                width: 100%;
+                display: block;
+            }
+
+            .top-nav a {
+                font-size: 20px;
+            }
+
+            nav .menu {
+                display: block;
+
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wraper">
+        <div class="top-nav">
+            <nav>
+                <ul>
+                    <li><a href="">HOME</a></li>
+                    <li><a href="#band">BAND</a></li>
+                    <li><a href="#tour">TOUR</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                    <li><a class="drop-down" href="">MORE<i class="fa fa-caret-down"></i></a>
+                        <ul>
+                            <li><a href="">MARCHANDISE</a></li>
+                            <li><a href="">EXTRAS</a></li>
+                            <li><a href="">MEDIA</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a class="search" href=""><i class="fa fa-search"></i></a>
+        </div>
+        <div class="animation">
+            <div class="slider">
+                <img src="hd1.jpg" alt="">
+                <img src="hd2.jpg" alt="">
+                <img src="hd3.jpg" alt="">
+                <img src="hd1.jpg" alt="">
+                <img src="hd2.jpg" alt="">
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="band">
+                <h1 id="band"> THE BAND</h1>
+                <p>WE LOVE MUSIC </p>
+                <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime ab voluptatem sequi, eum hic
+                    consectetur
+                    accusamus. Odit, dignissimos ea officia dolorem laborum quis tempore corporis deserunt fugit est
+                    necessitatibus
+                    suscipit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos doloribus tenetur, maxime
+                    nisi fuga
+                    repellat nesciunt dolore totam. Asperiores atque ullam, dolorem facere corporis eligendi animi
+                    quidem nulla,
+                    totam officiis veniam rerum ea iste fugit dolore cumque vel iure repellendus? Qui, aperiam. Tempora
+                    harum
+                    nostrum ducimus debitis! Aut ut earum dolorum dolores. Eveniet eaque cupiditate mollitia alias
+                    asperiores,
+                    laudantium quidem consequatur, perferendis expedita laborum, accusamus recusandae? Quam suscipit
+                    repellat
+                    dolorum. Eaque commodi quaerat praesentium, ducimus maxime alias eligendi corporis voluptatum quasi
+                    numquam.
+                    Omnis dolor commodi nulla, sequi aspernatur voluptas accusamus tenetur quis animi. Impedit molestias
+                    provident
+                    soluta placeat officiis id?consectetur accusamus. Odit, dignissimos ea officia dolorem laborum quis
+                    tempore
+                    corporis deserunt fugit est necessitatibus suscipit! Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit.
+                    Quos doloribus tenetur, maxime nisi fuga repellat nesciunt dolore totam. Asperiores atque ullam,
+                    dolorem facere
+                    corporis eligendi animi quidem nulla, totam officiis veniam rerum ea iste fugit dolore cumque vel
+                    iure
+                    repellendus? Qui, aperiam. Tempora harum nostrum ducimus debitis! Aut ut earum dolorum dolores.
+                    Eveniet eaque
+                    cupiditate mollitia alias asperiores, laudantium quidem consequatur, perferendis expedita laborum,
+                    accusamus
+                    recusandae? Quam suscipit repellat dolorum. Eaque commodi quaerat praesentium, ducimus maxime alias
+                    eligendi
+                    corporis voluptatum quasi numquam. Omnis dolor commodi nulla, sequi aspernatur voluptas accusamus
+                    tenetur quis
+                    animi. Impedit molestias provident soluta placeat officiis id?</p>
+            </div>
+            <div class="img-box">
+                <div class="img">
+                    <p>Name</p>
+                    <img src="11.jpg" alt="">
+                </div>
+                <div class="img">
+                    <p>Name</p>
+                    <img src="11.jpg" alt="">
+                </div>
+                <div class="img">
+                    <p>Name</p>
+                    <img src="11.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="other">
+                <div id="tour">
+                    <h1>TOUR DATES</h1>
+                    <p><i>REMEMBER TO BOOK YOURS TICKETS!</i></p>
+                </div>
+                <div class="tour-container">
+                    <ul>
+                        <li>September <span>Solid Out</span> </li>
+                        <li>October <span>Solid Out</span></li>
+                        <li class="circle">November <span>3</span></li>
+                    </ul>
+                </div>
+                <div class="img-box1">
+                    <div class="city">
+                        <img src="newyork.jpg" alt="">
+                        <h3> New Yark</h3>
+                        <p class="lighter">Fri 27 Nov 2016</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti error porro fugit labore,
+                            quam
+                            assumenda
+                            magnam culpa dolorum eos illo? Id illo incidunt eos, eveniet odio praesentium corrupti eaque
+                            qui!
+                        </p>
+                        <button type="button"> Buy Tickets</button>
+                    </div>
+                    <div class="city">
+                        <img src="paris.jpg" alt="">
+                        <h3>pairs</h3>
+                        <p class="lighter">Fri 27 Nov 2016</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores temporibus accusamus
+                            explicabo quasi repudiandae cupiditate, ipsam odio voluptas consequatur provident.</p>
+                        <button type="button"> Buy Tickets</button>
+
+                    </div>
+                    <div class="city">
+                        <img src="sanfran.jpg" alt="">
+                        <h3>Sanfran</h3>
+                        <p class="lighter">Fri 27 Nov 2016</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores temporibus accusamus
+                            explicabo quasi repudiandae
+                            cupiditate, ipsam odio voluptas consequatur provident.</p>
+                        <button type="button">Buy Tickets</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contact">
+            <div class="other1">
+                <div class="contact1">
+                    <h1>CONTACT</h1>
+                    <p><i>Fan?Drop a note!</i></p>
+                </div>
+                <div class="div">
+                    <div class="contact-info">
+                        <p>Chicago, US</p>
+                        <p>Phone: +00 151515</p>
+                        <p>Email: mail@mail.com</p>
+                    </div>
+                    <div class="input-contact-info">
+                        <div class="info">
+                            <input type="text" placeholder="Name">
+                            <input type="email" placeholder="Email">
+                        </div>
+                        <input type="text" placeholder="Message">
+                        <button type="submit">SEND</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map">
+            <img src="map.jpg" alt="">
+        </div>
+        <div class="social-liks">
+            <div class="social-icons">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-snapchat-square"></i>
+                <i class="fa fa-pinterest"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-apple"></i>
+            </div>
+            <footer> Powered by iftikhar </footer>
+        </div>
+    </div>
+</body>
+
+</html>
